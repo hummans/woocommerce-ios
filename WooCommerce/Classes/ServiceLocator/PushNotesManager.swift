@@ -12,7 +12,7 @@ protocol PushNotesManager {
     /// An observable that emits values when the app is activated due to a Remote Notification.
     /// The Remote Notification is emitted.
     ///
-    var inactiveNotifications: Observable<ForegroundNotification> { get }
+    var inactiveNotifications: Observable<PushNotification> { get }
 
     /// Resets the Badge Count.
     ///

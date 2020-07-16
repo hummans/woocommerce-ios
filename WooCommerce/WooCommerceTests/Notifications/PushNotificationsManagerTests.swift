@@ -437,7 +437,7 @@ final class PushNotificationsManagerTests: XCTestCase {
         // Given
         application.applicationState = .inactive
 
-        var emittedNotifications = [ForegroundNotification]()
+        var emittedNotifications = [PushNotification]()
         _ = manager.inactiveNotifications.subscribe { notification in
             emittedNotifications.append(notification)
         }

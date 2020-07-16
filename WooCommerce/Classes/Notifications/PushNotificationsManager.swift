@@ -21,17 +21,17 @@ final class PushNotificationsManager: PushNotesManager {
     }
 
     /// Mutable reference to `foregroundNotifications`.
-    private let foregroundNotificationsSubject = PublishSubject<ForegroundNotification>()
+    private let foregroundNotificationsSubject = PublishSubject<PushNotification>()
 
     /// An observable that emits values when the app is activated due to a Remote Notification.
     /// The Remote Notification is emitted.
     ///
-    var inactiveNotifications: Observable<ForegroundNotification> {
+    var inactiveNotifications: Observable<PushNotification> {
         inactiveNotificationsSubject
     }
 
     /// Mutable reference to `backgroundNotifications`
-    private let inactiveNotificationsSubject = PublishSubject<ForegroundNotification>()
+    private let inactiveNotificationsSubject = PublishSubject<PushNotification>()
 
     /// Returns the current Application's State
     ///
@@ -363,7 +363,7 @@ private extension PushNotificationsManager {
 
         DDLogVerbose("📱 Handling Notification in Inactive State")
 
-        if let notification = ForegroundNotification.from(userInfo: userInfo) {
+        if let notification = PushNotification.from(userInfo: userInfo) {
             configuration.application.presentNotificationDetails(for: Int64(notification.noteID))
 
             inactiveNotificationsSubject.send(notification)
